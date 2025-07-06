@@ -41,7 +41,9 @@
                             <img src="{{ base_path }}/{{ image.file_path }}" alt="{{ image.title }}" class="portfolio-img">
                             <div class="portfolio-overlay">
                                 <h3>{{ image.title }}</h3>
-                                <p>{{ image.location }}</p>
+                                {% if image.location %}
+                                    <p>{{ image.location }}</p>
+                                {% endif %}
                             </div>
                         </div>
                     </a>

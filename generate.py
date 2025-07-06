@@ -139,6 +139,36 @@ def copy_static_files():
     shutil.copytree(images_src, images_dest, dirs_exist_ok=True)
 
 
+def generate_sitemap():
+    sitemap_path = os.path.join(OUTPUT_DIR, "sitemap.xml")
+    base_url = "https://www.fabiofedrigo.it"  # Cambia con il tuo dominio reale
+
+    urls = []
+
+    # Aggiungi la homepage
+    urls.append(f"{base_url}/index.html")
+
+    # Scandisci l'intera cartella output
+    for root, _, files in os.walk(OUTPUT_DIR):
+        for file in files:
+            if file.endswith(".html") and file != "index.html":
+                full_path = os.path.join(root, file)
+                relative_path = os.path.relpath(full_path, OUTPUT_DIR).replace("\\", "/")
+                urls.append(f"{base_url}/{relative_path}")
+
+    # Scrivi il file XML
+    with open(sitemap_path, "w") as f:
+        f.write('<?xml version="1.0" encoding="UTF-8"?>\n')
+        f.write('<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n')
+        for url in urls:
+            f.write("  <url>\n")
+            f.write(f"    <loc>{url}</loc>\n")
+            f.write("  </url>\n")
+        f.write("</urlset>\n")
+
+    print(f"Sitemap generata: {sitemap_path}")
+
+
 # Funzione principale per generare il sito
 def generate_site():
     print("Inizio generazione sito...")
@@ -205,6 +235,8 @@ def generate_site():
     # Copia i file statici
     copy_static_files()
     print("File statici copiati.")
+
+    generate_sitemap()
 
     print("Generazione completata con successo!")
 

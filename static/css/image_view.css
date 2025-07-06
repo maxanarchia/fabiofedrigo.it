@@ -216,4 +216,8 @@ body {
     .photo-meta {
         grid-template-columns: 1fr;
     }
+
+    .grid-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
