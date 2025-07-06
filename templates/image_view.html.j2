@@ -1,0 +1,87 @@
+{% extends "base.html.j2" %}
+
+{% block title %}{{ category | capitalize }} | Portfolio Fotografico{% endblock %}
+
+{% block styles %}
+    <!-- CSS specifico categoria -->
+    <link rel="stylesheet" href="{{ base_path }}/static/css/photo_view.css">
+{% endblock %}
+
+{% block content %}
+    <!-- Category Header -->
+    <div class="category-header">
+        <div class="container">
+            <h1>{{ category | capitalize }}</h1>
+        </div>
+    </div>
+
+    <!-- Photo Viewer Section -->
+    <section class="photo-viewer">
+        <div class="container">
+            <div class="viewer-container">
+                <div class="main-photo">
+                    <img id="current-photo" src="{{ base_path }}/{{ current_image.file_path }}" alt="Foto principale">
+                </div>
+
+                <div class="photo-info">
+                    <h2 id="photo-title">{{ current_image.title }}</h2>
+                    <div class="photo-meta">
+                        {% if current_image.date %}
+                        <div class="meta-item">
+                            <h4>Data</h4>
+                            <p id="photo-date">{{ current_image.date }}</p>
+                        </div>
+                        {% endif %}
+
+                        {% if current_image.location %}
+                        <div class="meta-item">
+                            <h4>Luogo</h4>
+                            <p id="photo-location">{{ current_image.location }}</p>
+                        </div>
+                        {% endif %}
+
+                        {% if current_image.dimensions %}
+                        <div class="meta-item">
+                            <h4>Dimensioni</h4>
+                            <p id="photo-dimensions">{{ current_image.dimensions }}</p>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+
+            <!-- Photo Navigation -->
+            <div class="photo-nav">
+                <a href="{{ base_path }}/{{ current_image.previous_page_path }}" class="nav-arrow prev-photo">
+                    <i class="fas fa-chevron-left arrow-icon"></i>
+                    <span>Precedente</span>
+                </a>
+                <a href="{{ base_path }}/{{ current_image.next_page_path }}" class="nav-arrow next-photo">
+                    <span>Successiva</span>
+                    <i class="fas fa-chevron-right arrow-icon"></i>
+                </a>
+            </div>
+
+            <!-- Photo Grid -->
+            <div class="photo-grid">
+                <h3>Altre foto in questa categoria</h3>
+                <div class="grid-container">
+                {% for image in images %}
+                <div class="grid-item {% if image == current_image %}active{% endif %}" data-filename="{{ image.title }}">
+                    <a href="{{ base_path }}/{{ image.page_path }}">
+                        <img src="{{ base_path }}/{{ image.file_path }}" alt="{{ image.title }}">
+                        <div class="image-info">
+                            <h4>{{ image.title }}</h4>
+                        </div>
+                    </a>
+                </div>
+                {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block scripts %}
+    <!-- JS specifico categoria -->
+{% endblock %}

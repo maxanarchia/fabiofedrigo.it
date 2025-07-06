@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <!-- CSS comune a tutte le pagine -->
+    <link rel="stylesheet" href="{{ base_path }}/static/css/base.css">
+
+    <!-- Blocco per CSS specifici di ogni pagina -->
+    {% block styles %}{% endblock %}
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="container">
+            <nav>
+                <a href="{% if is_homepage %}#home{% else %}{{ base_path }}/index.html#home{% endif %}" class="logo">Fabio<span>Fedrigo</span></a>
+                <ul class="nav-links">
+                    <li><a href="{% if is_homepage %}#home{% else %}{{ base_path }}/index.html#home{% endif %}">Home</a></li>
+                    <li><a href="{% if is_homepage %}#portfolio{% else %}{{ base_path }}/index.html#portfolio{% endif %}">Portfolio</a></li>
+                    <li><a href="{% if is_homepage %}#about{% else %}{{ base_path }}/index.html#about{% endif %}">Chi Sono</a></li>
+                    <li><a href="{% if is_homepage %}#contact{% else %}{{ base_path }}/index.html#contact{% endif %}">Contatti</a></li>
+                </ul>
+                <div class="mobile-menu">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Contenuto specifico di ogni pagina -->
+    {% block content %}{% endblock %}
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <a href="#" class="logo">Foto<span>Grafia</span></a>
+                <div class="social-links">
+                    <a href="https://www.instagram.com/fabio.fedrigo/"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/people/Fabio-Fedrigo/pfbid04YUDKj8CSHceGHSAYv81Z9cvvCzerrftXQVimJp1JVS8zz1kuCoZrWiYQYzwDCC1l/"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.linkedin.com/in/fabio-fedrigo-04736259/"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+                <p class="copyright">© 2023 Fabio Fedrigo Fotografia. Tutti i diritti riservati.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript comune -->
+    <script src="{{ base_path }}/static/js/base.js"></script>
+
+    <!-- Blocco per JS specifici di ogni pagina -->
+    {% block scripts %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,106 @@
+{% extends "base.html.j2" %}
+
+{% block title %}Portfolio Fotografico | Street & Portrait{% endblock %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{{ base_path }}/static/css/home.css">
+{% endblock %}
+
+{% block content %}
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Momenti in Bianco e Nero</h1>
+            <p>Street photography e ritratti che raccontano storie attraverso la luce, le ombre e le emozioni catturate nel tempo.</p>
+            <a href="#portfolio" class="btn">Esplora il Portfolio</a>
+        </div>
+        <a href="#portfolio" class="scroll-down">
+            <i class="fas fa-chevron-down"></i>
+        </a>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="portfolio" id="portfolio">
+        <div class="container">
+            <div class="section-title">
+                <h2>Portfolio</h2>
+            </div>
+
+            <!-- Categorie dinamiche -->
+            {% for category in categories %}
+            <div class="category-section">
+                <div class="category-header">
+                    <h3 class="category-title">{{ category | capitalize }}</h3>
+                    <a href="{{ base_path }}/{{ images[category][0].page_path }}" class="btn btn-category">Vedi tutti</a>
+                </div>
+
+                <div class="category-grid">
+                    {% for image in images[category][:4] %}
+                    <a href="{{ base_path }}/{{ image.page_path }}" class="portfolio-link">
+                        <div class="portfolio-item" data-category="{{ category }}">
+                            <img src="{{ base_path }}/{{ image.file_path }}" alt="{{ image.title }}" class="portfolio-img">
+                            <div class="portfolio-overlay">
+                                <h3>{{ image.title }}</h3>
+                                <p>{{ image.location }}</p>
+                            </div>
+                        </div>
+                    </a>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-img">
+                    <img src="{{ base_path }}/static/images/fabionikoninst.jpg" alt="Fotografo">
+                </div>
+                <div class="about-text">
+                    <h2>Chi Sono</h2>
+                    <p>Mi chiamo Fabio Fedrigo e sono un fotografo specializzato in street photography e ritratti in bianco e nero. La mia passione per la fotografia nasce dall'amore per le storie umane e la bellezza nascosta nella quotidianità.</p>
+                    <p>Con la mia Leica M, esploro le città italiane cercando momenti autentici, emozioni genuine e connessioni umane. Il bianco e nero è la mia scelta espressiva perché elimina le distrazioni e rivela l'essenza delle scene.</p>
+                    <p>Ogni scatto è una ricerca della verità, un tentativo di fermare il tempo e catturare l'anima delle persone e dei luoghi che incontro. La mia fotografia è un dialogo silenzioso con il mondo che mi circonda.</p>
+                    <p class="signature">Fabio Fedrigo</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contatti</h2>
+            </div>
+            <div class="contact-content">
+                <form class="contact-form">
+                    <div class="form-group">
+                        <label for="name">Nome</label>
+                        <input type="text" id="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" required>
+                    </div>
+                    <div class="form-group full">
+                        <label for="subject">Oggetto</label>
+                        <input type="text" id="subject" required>
+                    </div>
+                    <div class="form-group full">
+                        <label for="message">Messaggio</label>
+                        <textarea id="message" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Invia Messaggio</button>
+                </form>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block scripts %}
+    <script src="{{ base_path }}/static/js/home.js"></script>
+{% endblock %}
