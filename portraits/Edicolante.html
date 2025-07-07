@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portraits | Portfolio Fotografico</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <!-- CSS comune a tutte le pagine -->
+    <link rel="stylesheet" href="../static/css/base.css">
+
+    <!-- Blocco per CSS specifici di ogni pagina -->
+    
+    <!-- CSS specifico categoria -->
+    <link rel="stylesheet" href="../static/css/image_view.css">
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="container">
+            <nav>
+                <a href="../index.html#home" class="logo">Fabio <span>Fedrigo</span></a>
+                <ul class="nav-links">
+                    <li><a href="../index.html#home">Home</a></li>
+                    <li><a href="../index.html#portfolio">Portfolio</a></li>
+                    <li><a href="../index.html#about">Chi Sono</a></li>
+                    <li><a href="../index.html#contact">Contatti</a></li>
+                </ul>
+                <div class="mobile-menu">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Contenuto specifico di ogni pagina -->
+    
+    <!-- Category Header -->
+    <div class="category-header">
+        <div class="container">
+            <h1>Portraits</h1>
+        </div>
+    </div>
+
+    <!-- Photo Viewer Section -->
+    <section class="photo-viewer">
+        <div class="container">
+            <div class="viewer-container">
+                <div class="main-photo">
+                    <img id="current-photo" src="../static/images/portraits/Edicolante.jpg" alt="Foto principale">
+                </div>
+
+                <div class="photo-info">
+                    <h2 id="photo-title">Edicolante</h2>
+                    <div class="photo-meta">
+                        
+                        <div class="meta-item">
+                            <h4>Data</h4>
+                            <p id="photo-date">2025-06-23</p>
+                        </div>
+                        
+
+                        
+
+                        
+                        <div class="meta-item">
+                            <h4>Dimensioni</h4>
+                            <p id="photo-dimensions">(4500, 4500)</p>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+
+            <!-- Photo Navigation -->
+            <div class="photo-nav">
+                <a href="../portraits/Donne sulla porta di casa.html" class="nav-arrow prev-photo">
+                    <i class="fas fa-chevron-left arrow-icon"></i>
+                    <span>Precedente</span>
+                </a>
+                <a href="../portraits/Life(1).html" class="nav-arrow next-photo">
+                    <span>Successiva</span>
+                    <i class="fas fa-chevron-right arrow-icon"></i>
+                </a>
+            </div>
+
+            <!-- Photo Grid -->
+            <div class="photo-grid">
+                <h3>Altre foto in questa categoria</h3>
+                <div class="grid-container">
+                
+                <div class="grid-item " data-filename="Carmine M">
+                    <a href="../portraits/Carmine M.html">
+                        <img src="../static/images/portraits/Carmine M.jpg" alt="Carmine M">
+                        <div class="image-info">
+                            <h4>Carmine M</h4>
+                        </div>
+                    </a>
+                </div>
+                
+                <div class="grid-item " data-filename="Donne Sulla Porta Di Casa">
+                    <a href="../portraits/Donne sulla porta di casa.html">
+                        <img src="../static/images/portraits/Donne sulla porta di casa.jpg" alt="Donne Sulla Porta Di Casa">
+                        <div class="image-info">
+                            <h4>Donne Sulla Porta Di Casa</h4>
+                        </div>
+                    </a>
+                </div>
+                
+                <div class="grid-item active" data-filename="Edicolante">
+                    <a href="../portraits/Edicolante.html">
+                        <img src="../static/images/portraits/Edicolante.jpg" alt="Edicolante">
+                        <div class="image-info">
+                            <h4>Edicolante</h4>
+                        </div>
+                    </a>
+                </div>
+                
+                <div class="grid-item " data-filename="Life(1)">
+                    <a href="../portraits/Life(1).html">
+                        <img src="../static/images/portraits/Life(1).jpg" alt="Life(1)">
+                        <div class="image-info">
+                            <h4>Life(1)</h4>
+                        </div>
+                    </a>
+                </div>
+                
+                <div class="grid-item " data-filename="Life">
+                    <a href="../portraits/Life.html">
+                        <img src="../static/images/portraits/Life.jpg" alt="Life">
+                        <div class="image-info">
+                            <h4>Life</h4>
+                        </div>
+                    </a>
+                </div>
+                
+                <div class="grid-item " data-filename="Man In London">
+                    <a href="../portraits/Man in London.html">
+                        <img src="../static/images/portraits/Man in London.jpg" alt="Man In London">
+                        <div class="image-info">
+                            <h4>Man In London</h4>
+                        </div>
+                    </a>
+                </div>
+                
+                <div class="grid-item " data-filename="My Old Man">
+                    <a href="../portraits/My old man.html">
+                        <img src="../static/images/portraits/My old man.jpg" alt="My Old Man">
+                        <div class="image-info">
+                            <h4>My Old Man</h4>
+                        </div>
+                    </a>
+                </div>
+                
+                <div class="grid-item " data-filename="Smile">
+                    <a href="../portraits/Smile.html">
+                        <img src="../static/images/portraits/Smile.jpg" alt="Smile">
+                        <div class="image-info">
+                            <h4>Smile</h4>
+                        </div>
+                    </a>
+                </div>
+                
+                <div class="grid-item " data-filename="The Ceramist">
+                    <a href="../portraits/The ceramist.html">
+                        <img src="../static/images/portraits/The ceramist.jpg" alt="The Ceramist">
+                        <div class="image-info">
+                            <h4>The Ceramist</h4>
+                        </div>
+                    </a>
+                </div>
+                
+                <div class="grid-item " data-filename="Uomo Che Fuma">
+                    <a href="../portraits/Uomo che fuma.html">
+                        <img src="../static/images/portraits/Uomo che fuma.jpg" alt="Uomo Che Fuma">
+                        <div class="image-info">
+                            <h4>Uomo Che Fuma</h4>
+                        </div>
+                    </a>
+                </div>
+                
+                <div class="grid-item " data-filename="Uomo Fuma">
+                    <a href="../portraits/Uomo fuma.html">
+                        <img src="../static/images/portraits/Uomo fuma.jpg" alt="Uomo Fuma">
+                        <div class="image-info">
+                            <h4>Uomo Fuma</h4>
+                        </div>
+                    </a>
+                </div>
+                
+                <div class="grid-item " data-filename="Vintage">
+                    <a href="../portraits/Vintage.html">
+                        <img src="../static/images/portraits/Vintage.jpg" alt="Vintage">
+                        <div class="image-info">
+                            <h4>Vintage</h4>
+                        </div>
+                    </a>
+                </div>
+                
+                <div class="grid-item " data-filename="Woman">
+                    <a href="../portraits/Woman.html">
+                        <img src="../static/images/portraits/Woman.jpg" alt="Woman">
+                        <div class="image-info">
+                            <h4>Woman</h4>
+                        </div>
+                    </a>
+                </div>
+                
+                <div class="grid-item " data-filename="Young Man.">
+                    <a href="../portraits/Young man..html">
+                        <img src="../static/images/portraits/Young man..jpg" alt="Young Man.">
+                        <div class="image-info">
+                            <h4>Young Man.</h4>
+                        </div>
+                    </a>
+                </div>
+                
+                <div class="grid-item " data-filename="Young Man">
+                    <a href="../portraits/Young man.html">
+                        <img src="../static/images/portraits/Young man.jpg" alt="Young Man">
+                        <div class="image-info">
+                            <h4>Young Man</h4>
+                        </div>
+                    </a>
+                </div>
+                
+                <div class="grid-item " data-filename="Fumatrice Di Sigaro">
+                    <a href="../portraits/fumatrice di sigaro.html">
+                        <img src="../static/images/portraits/fumatrice di sigaro.jpg" alt="Fumatrice Di Sigaro">
+                        <div class="image-info">
+                            <h4>Fumatrice Di Sigaro</h4>
+                        </div>
+                    </a>
+                </div>
+                
+                <div class="grid-item " data-filename="Manuemma Bn Cornice">
+                    <a href="../portraits/manuemma bn cornice.html">
+                        <img src="../static/images/portraits/manuemma bn cornice.jpg" alt="Manuemma Bn Cornice">
+                        <div class="image-info">
+                            <h4>Manuemma Bn Cornice</h4>
+                        </div>
+                    </a>
+                </div>
+                
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <a href="#" class="logo">Fabio <span>Fedrigo</span></a>
+                <div class="social-links">
+                    <a href="https://www.instagram.com/fabio.fedrigo/"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/people/Fabio-Fedrigo/pfbid04YUDKj8CSHceGHSAYv81Z9cvvCzerrftXQVimJp1JVS8zz1kuCoZrWiYQYzwDCC1l/"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.flickr.com/photos/88817313@N02/"><i class="fab fa-flickr"></i></a>
+                    <a href="https://www.linkedin.com/in/fabio-fedrigo-04736259/"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+                <p class="copyright">© 2023 Fabio Fedrigo Fotografia. Tutti i diritti riservati.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript comune -->
+    <script src="../static/js/base.js"></script>
+
+    <!-- Blocco per JS specifici di ogni pagina -->
+    
+    <!-- JS specifico categoria -->
+
+</body>
+</html>
