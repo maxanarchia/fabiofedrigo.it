@@ -1,0 +1,26 @@
+name: Daily Backup Branch
+
+on:
+  schedule:
+    - cron: '0 0 * * *' # Ogni giorno a mezzanotte (UTC)
+  workflow_dispatch:     # Permette di lanciare manualmente
+
+jobs:
+  backup:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Create or update backup branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          # Forza la creazione/aggiornamento della branch "backup"
+          git branch -f backup
+          git push origin backup --force
