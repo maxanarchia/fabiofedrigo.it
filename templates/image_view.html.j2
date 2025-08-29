@@ -43,7 +43,7 @@
                         {% if current_image.dimensions %}
                         <div class="meta-item">
                             <h4>Dimensioni</h4>
-                            <p id="photo-dimensions">{{ current_image.dimensions }}</p>
+                            <p id="photo-dimensions">{{ current_image.dimensions[0] }} x {{ current_image.dimensions[1] }}</p>
                         </div>
                         {% endif %}
                     </div>

@@ -46,7 +46,7 @@ body {
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    background-color: #000;
+    background-color: var(--black);
     border-radius: 4px;
 }
 
