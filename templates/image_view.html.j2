@@ -69,7 +69,7 @@
                 {% for image in images %}
                 <div class="grid-item {% if image == current_image %}active{% endif %}" data-filename="{{ image.title }}">
                     <a href="{{ base_path }}/{{ image.page_path }}">
-                        <img src="{{ base_path }}/{{ image.file_path }}" alt="{{ image.title }}">
+                        <img src="{{ base_path }}/{{ image.thumb_path }}" alt="{{ image.title }}">
                         <div class="image-info">
                             <h4>{{ image.title }}</h4>
                         </div>

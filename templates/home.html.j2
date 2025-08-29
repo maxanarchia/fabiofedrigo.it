@@ -38,7 +38,7 @@
                     {% for image in images[category][:4] %}
                     <a href="{{ base_path }}/{{ image.page_path }}" class="portfolio-link">
                         <div class="portfolio-item" data-category="{{ category }}">
-                            <img src="{{ base_path }}/{{ image.file_path }}" alt="{{ image.title }}" class="portfolio-img">
+                            <img src="{{ base_path }}/{{ image.thumb_path }}" alt="{{ image.title }}" class="portfolio-img">
                             <div class="portfolio-overlay">
                                 <h3>{{ image.title }}</h3>
                                 {% if image.location %}

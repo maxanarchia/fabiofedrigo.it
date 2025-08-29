@@ -109,6 +109,7 @@ def get_images_by_category():
 
             images[category].append({
                 'file_path': f"static/images/{category}/{filename}",
+                'thumb_path': f"static/thumbs/{category}/{filename}",  # Nuovo campo per miniature
                 'page_path': f"{category}/{os.path.splitext(filename)[0]}.html",
                 'previous_page_path': f"{category}/{os.path.splitext(prev_filename)[0]}.html",
                 'next_page_path': f"{category}/{os.path.splitext(next_filename)[0]}.html",
@@ -118,7 +119,7 @@ def get_images_by_category():
                 'dimensions': metadata['dimensions']
             })
 
-    return dict(images)  # Converti in dict normale se non vuoi defaultdict
+    return dict(images)
 
 
 # Funzione per copiare i file statici
@@ -137,6 +138,33 @@ def copy_static_files():
     images_src = IMAGES_DIR
     images_dest = os.path.join(OUTPUT_DIR, 'static', 'images')
     shutil.copytree(images_src, images_dest, dirs_exist_ok=True)
+
+    # Crea le miniature per le immagini della galleria
+    thumbs_dest = os.path.join(OUTPUT_DIR, 'static', 'thumbs')
+    os.makedirs(thumbs_dest, exist_ok=True)
+
+    categories = get_categories()
+    for category in categories:
+        category_path = os.path.join(IMAGES_DIR, category)
+        if not os.path.exists(category_path):
+            continue
+
+        image_files = [f for f in os.listdir(category_path) if f.lower().endswith(('.jpg', '.jpeg', '.png', '.webp'))]
+        for filename in image_files:
+            src_path = os.path.join(category_path, filename)
+            dest_path = os.path.join(thumbs_dest, category, filename)
+
+            os.makedirs(os.path.dirname(dest_path), exist_ok=True)
+
+            try:
+                with Image.open(src_path) as img:
+                    # Ridimensiona mantenendo le proporzioni
+                    h = 400
+                    w = int(img.width * h / img.height)
+                    img_resized = img.resize((w, h), Image.LANCZOS)
+                    img_resized.save(dest_path, optimize=True, quality=85)
+            except Exception as e:
+                print(f"Errore nella creazione della miniatura per {src_path}: {e}")
 
 
 def generate_sitemap():
