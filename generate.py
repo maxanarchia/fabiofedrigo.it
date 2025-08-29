@@ -134,10 +134,41 @@ def copy_static_files():
     js_dest = os.path.join(OUTPUT_DIR, 'static', 'js')
     shutil.copytree(js_src, js_dest, dirs_exist_ok=True)
 
-    # Copia le immagini (mantenendo la struttura delle cartelle)
+    # Copia e ridimensiona le immagini (mantenendo la struttura delle cartelle)
     images_src = IMAGES_DIR
     images_dest = os.path.join(OUTPUT_DIR, 'static', 'images')
-    shutil.copytree(images_src, images_dest, dirs_exist_ok=True)
+    
+    # Crea la struttura delle cartelle senza copiare i file
+    shutil.copytree(images_src, images_dest, dirs_exist_ok=True, ignore=lambda src, names: [
+        n for n in names 
+        if os.path.isfile(os.path.join(src, n)) and n.lower().endswith(('.jpg', '.jpeg', '.png', '.webp'))
+    ])
+
+    # Processa ogni immagine per ridimensionamento
+    for root, dirs, files in os.walk(images_src):
+        for file in files:
+            if file.lower().endswith(('.jpg', '.jpeg', '.png', '.webp')):
+                src_path = os.path.join(root, file)
+                # Costruisci il percorso di destinazione relativo
+                rel_path = os.path.relpath(root, images_src)
+                dest_dir = os.path.join(images_dest, rel_path)
+                dest_path = os.path.join(dest_dir, file)
+                
+                try:
+                    with Image.open(src_path) as img:
+                        # Ridimensiona solo se l'altezza è maggiore di 700px
+                        if img.height > 700:
+                            ratio = 700 / img.height
+                            new_width = int(img.width * ratio)
+                            img_resized = img.resize((new_width, 700), Image.LANCZOS)
+                            img_resized.save(dest_path, optimize=True, quality=85)
+                        else:
+                            # Se non necessita ridimensionamento, copia normalmente
+                            shutil.copy2(src_path, dest_path)
+                except Exception as e:
+                    print(f"Errore nel processare l'immagine {src_path}: {e}")
+                    # Fallback: copia l'originale in caso di errore
+                    shutil.copy2(src_path, dest_path)
 
     # Crea le miniature per le immagini della galleria
     thumbs_dest = os.path.join(OUTPUT_DIR, 'static', 'thumbs')

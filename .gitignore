@@ -1,3 +1,4 @@
 .idea/
 output/
 publish.py
+.DS_Store
